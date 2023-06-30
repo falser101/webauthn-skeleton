@@ -37,12 +37,13 @@ app.use(tokenroutes.allowedMethods());
 
 // Local development
 if (config.mode === "development") {
-	const https = require("https");
-	const fs = require("fs");
-	https.createServer({
-		key: fs.readFileSync("./keys/key.pem"),
-		cert: fs.readFileSync("./keys/cert.pem")
-	}, app.callback()).listen(config.port);  
+	app.listen(config.port);
+	// const https = require("https");
+	// const fs = require("fs");
+	// https.createServer({
+	// 	key: fs.readFileSync("./keys/key.pem"),
+	// 	cert: fs.readFileSync("./keys/cert.pem")
+	// }, app.callback()).listen(config.port);
 
 // "Production" HTTP - (for use behind https proxy)
 } else {

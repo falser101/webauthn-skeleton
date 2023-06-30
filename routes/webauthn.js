@@ -45,11 +45,10 @@ router.post("/register", async (ctx) => {
 	}
 
 	if ( usernameClean.length > userNameMaxLenght ) {
-		response.json({
+		return ctx.body ={
 			"status": "failed",
 			"message": "Username " + usernameClean + " too long. Max username lenght is " + userNameMaxLenght + " characters!"
-		});
-		return;
+		};
 	}
 
 	let db = database.getData("/");

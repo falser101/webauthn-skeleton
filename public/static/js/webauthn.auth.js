@@ -67,15 +67,15 @@ function register (username, additional) {
 		.then((response) => {
 			let transports = response.response.getTransports ? response.response.getTransports() : undefined,
 				makeCredResponse = {
-				id: response.id,
-				rawId: base64.fromArrayBuffer(response.rawId,true),
-				transports: transports,
-				response: {
-					attestationObject: base64.fromArrayBuffer(response.response.attestationObject,true),
-					clientDataJSON: base64.fromArrayBuffer(response.response.clientDataJSON,true)
-				},
-				type: response.type
-			};
+					id: response.id,
+					rawId: base64.fromArrayBuffer(response.rawId,true),
+					transports: transports,
+					response: {
+						attestationObject: base64.fromArrayBuffer(response.response.attestationObject,true),
+						clientDataJSON: base64.fromArrayBuffer(response.response.clientDataJSON,true)
+					},
+					type: response.type
+				};
 			return sendWebAuthnResponse(makeCredResponse);
 		})
 		.then((response) => {
